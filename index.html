@@ -2,14 +2,13 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Mapa Interativo - Apresentação</title>
-  <!-- Bibliotecas do MapLibre -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa Brasília - Positron</title>
   <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
   <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet" />
   <style>
-    /* Remove as margens para o mapa ocupar 100% do slide */
     body { margin: 0; padding: 0; overflow: hidden; }
-    #map { width: 100vw; height: 100vh; }
+    #map { position: absolute; top: 0; bottom: 0; width: 100%; }
   </style>
 </head>
 <body>
@@ -17,17 +16,13 @@
   <script>
     const map = new maplibregl.Map({
       container: 'map',
-      // Estilo escuro (linhas brancas/fundo preto):
-      style: 'https://tiles.openfreemap.org/styles/dark-matter', 
-      
-      // Se preferir o estilo claro, troque a linha acima por:
-      // style: 'https://tiles.openfreemap.org/styles/positron',
-      
-      center: [-47.88, -15.79], // Coordenadas de início
-      zoom: 10.5
+      style: 'https://tiles.openfreemap.org/styles/positron', // Tema Positron
+      center: [-47.8825, -15.7942], // Coordenadas de Brasília
+      zoom: 11,
+      interactive: true // Garante que o clique, arraste e zoom funcionem
     });
     
-    // Adiciona controles de zoom no canto
+    // Adiciona os botões de zoom in/out no canto da tela
     map.addControl(new maplibregl.NavigationControl());
   </script>
 </body>
